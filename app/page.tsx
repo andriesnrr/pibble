@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import Image from 'next/image';
 import { 
   ChevronDown, 
   Heart, 
@@ -14,11 +14,6 @@ import {
   Play, 
   Download, 
   Apple, 
-  Smartphone,
-  MoveRight,
-  PhoneCall,
-  Check,
-  ArrowRight,
   UserPlus,
   PenTool,
   Search,
@@ -28,14 +23,6 @@ import {
 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 
 export default function PibbleLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -153,10 +140,12 @@ export default function PibbleLanding() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <img 
+              <Image 
                 src="/images/pibblelogo.png" 
                 alt="Pibble Logo" 
-                className="w-10 h-10 object-contain"
+                width={40}
+                height={40}
+                className="object-contain"
               />
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Pibble
@@ -268,9 +257,11 @@ export default function PibbleLanding() {
             {/* Hero Image */}
             <div className="relative">
               <div className="relative z-10">
-                <img 
+                <Image 
                   src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=600&fit=crop&crop=center" 
                   alt="Happy pets with owner"
+                  width={600}
+                  height={600}
                   className="rounded-3xl shadow-2xl w-full max-w-lg mx-auto"
                 />
               </div>
@@ -442,9 +433,11 @@ export default function PibbleLanding() {
             </div>
             
             <div className="relative">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1629196166180-4f37c2ee40bb?w=600&h=600&fit=crop&crop=center" 
                 alt="Veterinarian team"
+                width={600}
+                height={600}
                 className="rounded-3xl shadow-2xl w-full"
               />
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
@@ -592,10 +585,12 @@ export default function PibbleLanding() {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-2 mb-6">
-                <img 
+                <Image 
                   src="/images/pibblelogo.png" 
                   alt="Pibble Logo" 
-                  className="w-10 h-10 object-contain"
+                  width={40}
+                  height={40}
+                  className="object-contain"
                 />
                 <span className="text-2xl font-bold">Pibble</span>
               </div>
