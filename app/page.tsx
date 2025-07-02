@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from "framer-motion";
 import Image from 'next/image';
 import { 
   ChevronDown, 
@@ -19,7 +20,13 @@ import {
   Search,
   Shield,
   Zap,
-  Clock
+  Clock,
+  CreditCard,
+  Video,
+  Award,
+  Home,
+  ShoppingBag,
+  Building2
 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +34,23 @@ import { Badge } from "@/components/ui/badge";
 export default function PibbleLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [titleNumber, setTitleNumber] = useState(0);
+
+  const titles = useMemo(
+    () => ["terbaik", "terpercaya", "profesional", "berkualitas", "modern"],
+    []
+  );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === titles.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
 
   const navigationItems = [
     { title: "Home", href: "/" },
@@ -40,36 +64,37 @@ export default function PibbleLanding() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  // Sesuai dengan pitch deck - Features dari slide 4
   const features = [
     {
-      icon: <MessageCircle className="w-8 h-8" />,
-      title: "Konsultasi Online",
-      description: "Chat langsung dengan dokter hewan berpengalaman 24/7"
-    },
-    {
       icon: <Calendar className="w-8 h-8" />,
-      title: "Janji Temu",
-      description: "Booking appointment dengan mudah di klinik terdekat"
+      title: "Booking Service",
+      description: "Booking layanan perawatan hewan dengan mudah dan cepat"
     },
     {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Health Tracking",
-      description: "Monitor kesehatan hewan peliharaan secara real-time"
+      icon: <Award className="w-8 h-8" />,
+      title: "Rewarding System",
+      description: "Dapatkan reward setiap menggunakan layanan Pibble"
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Komunitas",
-      description: "Bergabung dengan komunitas pecinta hewan"
+      title: "Pet Profile",
+      description: "Kelola profil lengkap hewan peliharaan Anda"
     },
     {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Keamanan Data",
-      description: "Data hewan peliharaan Anda aman dan terlindungi"
+      icon: <CreditCard className="w-8 h-8" />,
+      title: "Online Payments",
+      description: "Pembayaran online yang aman dan mudah"
     },
     {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Respons Cepat",
-      description: "Dapatkan bantuan dalam hitungan menit"
+      icon: <Calendar className="w-8 h-8" />,
+      title: "Monitoring Schedule",
+      description: "Pantau jadwal perawatan hewan peliharaan"
+    },
+    {
+      icon: <Video className="w-8 h-8" />,
+      title: "Live Camera",
+      description: "Pantau hewan peliharaan secara real-time"
     }
   ];
 
@@ -97,45 +122,80 @@ export default function PibbleLanding() {
     },
     {
       step: "04",
-      title: "Mulai Konsultasi",
-      description: "Hubungkan dengan dokter hewan dan dapatkan perawatan terbaik",
-      icon: <MessageCircle className="w-12 h-12" />,
+      title: "Booking & Bayar",
+      description: "Lakukan booking dan pembayaran online dengan mudah",
+      icon: <CreditCard className="w-12 h-12" />,
       color: "bg-green-500"
     }
   ];
 
+  // Market Opportunities dari slide 6
+  const marketOpportunities = [
+    {
+      icon: <Building2 className="w-12 h-12" />,
+      title: "Pet Clinic",
+      description: "Klinik hewan professional untuk kesehatan pet"
+    },
+    {
+      icon: <ShoppingBag className="w-12 h-12" />,
+      title: "Pet Shop",
+      description: "Toko perlengkapan dan makanan hewan lengkap"
+    },
+    {
+      icon: <Heart className="w-12 h-12" />,
+      title: "Pet Adoption",
+      description: "Platform adopsi hewan yang aman dan terpercaya"
+    },
+    {
+      icon: <Home className="w-12 h-12" />,
+      title: "Pet Hotel",
+      description: "Tempat penitipan hewan yang nyaman dan aman"
+    },
+    {
+      icon: <Zap className="w-12 h-12" />,
+      title: "Pet Grooming",
+      description: "Layanan grooming professional untuk hewan kesayangan"
+    }
+  ];
+
+  // Team dari slide 8
   const teamMembers = [
-    { name: "Dr. Sarah Johnson", role: "Lead Veterinarian", image: "/api/placeholder/100/100", rating: 4.9 },
-    { name: "Dr. Michael Chen", role: "Senior Veterinarian", image: "/api/placeholder/100/100", rating: 4.8 },
-    { name: "Dr. Lisa Park", role: "Pet Behaviorist", image: "/api/placeholder/100/100", rating: 4.9 },
-    { name: "Dr. David Kim", role: "Emergency Specialist", image: "/api/placeholder/100/100", rating: 4.7 },
-    { name: "Dr. Emma Wilson", role: "Exotic Animal Expert", image: "/api/placeholder/100/100", rating: 4.8 },
-    { name: "Dr. Alex Rodriguez", role: "Surgery Specialist", image: "/api/placeholder/100/100", rating: 4.9 }
+    { name: "Andries Nauvalentin Roestam", role: "Web Developer", avatar: "👨‍💻" },
+    { name: "Enjelita Samosir", role: "Web UI Designer", avatar: "👩‍🎨" },
+    { name: "Frenky", role: "Quality Assurance", avatar: "🔍" },
+    { name: "Iren Abel Tarina", role: "Project Manager", avatar: "👩‍💼" },
+    { name: "Muhammad Alvin Firdaus", role: "Mobile Developer", avatar: "📱" },
+    { name: "Satria Tuladha Jati", role: "Mobile UI Designer", avatar: "🎨" }
   ];
 
   const faqs = [
     {
       question: "Apa itu Pibble dan bagaimana cara kerjanya?",
-      answer: "Pibble adalah platform komprehensif untuk perawatan hewan peliharaan yang menghubungkan pemilik hewan dengan dokter hewan, groomer, dan layanan perawatan lainnya. Aplikasi ini memungkinkan Anda untuk menjadwalkan janji temu, berkonsultasi online, dan melacak kesehatan hewan peliharaan Anda."
+      answer: "Pibble adalah aplikasi yang menjembatani pemilik hewan peliharaan dengan penyedia layanan dan jasa perawatan hewan. Seperti yang dialami Keysha, kami hadir untuk mengatasi masalah antrian panjang dan transparansi harga yang tidak jelas."
     },
     {
-      question: "Bagaimana cara mendaftar dan memulai?",
-      answer: "Anda dapat mendaftar dengan mudah melalui aplikasi mobile atau website kami. Cukup masukkan informasi dasar tentang Anda dan hewan peliharaan Anda, lalu ikuti 4 langkah sederhana untuk memulai konsultasi pertama."
+      question: "Layanan apa saja yang tersedia di Pibble?",
+      answer: "Pibble menyediakan berbagai layanan seperti Pet Clinic, Pet Shop, Pet Adoption, Pet Hotel, dan Pet Grooming. Semua terintegrasi dalam satu platform untuk kemudahan Anda."
     },
     {
-      question: "Apakah layanan konsultasi online aman dan terpercaya?",
-      answer: "Ya, semua konsultasi online kami dilakukan dengan dokter hewan berlisensi dan berpengalaman. Platform kami menggunakan teknologi enkripsi tingkat tinggi untuk menjaga keamanan dan privasi data Anda."
+      question: "Bagaimana sistem pembayaran di Pibble?",
+      answer: "Pibble menggunakan sistem Online Payments yang aman dan transparan. Anda dapat melihat harga layanan dengan jelas sebelum melakukan booking, tidak ada biaya tersembunyi."
     },
     {
-      question: "Berapa biaya untuk menggunakan layanan Pibble?",
-      answer: "Kami menawarkan berbagai paket layanan mulai dari konsultasi gratis untuk pengguna baru hingga paket premium dengan fitur lengkap. Harga bervariasi tergantung jenis layanan yang Anda pilih."
+      question: "Apakah ada sistem reward untuk pengguna?",
+      answer: "Ya! Pibble memiliki Rewarding System dimana Anda dapat mengumpulkan poin setiap menggunakan layanan dan menukarkannya dengan berbagai keuntungan."
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="w-full z-50 fixed top-0 left-0 bg-background/95 backdrop-blur-sm border-b">
+      <motion.header 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="w-full z-50 fixed top-0 left-0 bg-background/95 backdrop-blur-sm border-b"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -148,7 +208,7 @@ export default function PibbleLanding() {
                 className="object-contain"
               />
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Pibble
+                PIBBLE
               </span>
             </div>
 
@@ -167,7 +227,6 @@ export default function PibbleLanding() {
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <Button variant="ghost">Login</Button>
               <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
                 Download App
               </Button>
@@ -196,7 +255,6 @@ export default function PibbleLanding() {
                   </a>
                 ))}
                 <div className="pt-4 space-y-2">
-                  <Button variant="ghost" className="w-full justify-start">Login</Button>
                   <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600">
                     Download App
                   </Button>
@@ -205,28 +263,71 @@ export default function PibbleLanding() {
             </div>
           )}
         </div>
-      </header>
+      </motion.header>
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             {/* Hero Content */}
-            <div className="text-center lg:text-left">
-              <Badge variant="secondary" className="mb-6">
-                🐾 Platform #1 untuk Perawatan Hewan
-              </Badge>
+            <motion.div 
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-center lg:text-left"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Badge variant="secondary" className="mb-6">
+                  🐾 Pet Care and Health Service App
+                </Badge>
+              </motion.div>
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Perawatan Terbaik untuk
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent block">
-                  Sahabat Anda!
+                Perawatan
+                <span className="relative flex w-full justify-center lg:justify-start overflow-hidden text-center lg:text-left md:pb-4 md:pt-1">
+                  &nbsp;
+                  {titles.map((title, index: number) => (
+                    <motion.span
+                      key={index}
+                      className="absolute font-semibold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+                      initial={{ opacity: 0, y: "-100" }}
+                      transition={{ type: "spring", stiffness: 50 }}
+                      animate={
+                        titleNumber === index
+                          ? {
+                              y: 0,
+                              opacity: 1,
+                            }
+                          : {
+                              y: titleNumber > index ? -150 : 150,
+                              opacity: 0,
+                            }
+                      }
+                    >
+                      {title}
+                    </motion.span>
+                  ))}
                 </span>
+                untuk sahabat Anda!
               </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Platform lengkap yang menghubungkan pemilik hewan peliharaan dengan dokter hewan profesional, 
-                layanan grooming, dan komunitas pecinta hewan.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <motion.p 
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="text-xl text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+              >
+                Solusi untuk mengatasi antrian panjang dan transparansi harga yang tidak jelas. 
+                Aplikasi yang menjembatani pemilik hewan peliharaan dengan penyedia layanan perawatan hewan.
+              </motion.p>
+              <motion.div 
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              >
                 <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
                   <Download className="mr-2 h-5 w-5" />
                   Download Sekarang
@@ -235,58 +336,122 @@ export default function PibbleLanding() {
                   <Play className="mr-2 h-5 w-5" />
                   Lihat Demo
                 </Button>
-              </div>
+              </motion.div>
               
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mt-12 text-center lg:text-left">
+              <motion.div 
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                className="grid grid-cols-3 gap-6 mt-12 text-center lg:text-left"
+              >
                 <div>
-                  <div className="text-2xl font-bold text-purple-600">10K+</div>
-                  <div className="text-sm text-gray-600">Pengguna Aktif</div>
+                  <div className="text-2xl font-bold text-purple-600">5+</div>
+                  <div className="text-sm text-gray-600">Layanan Utama</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-purple-600">500+</div>
-                  <div className="text-sm text-gray-600">Dokter Hewan</div>
+                  <div className="text-2xl font-bold text-purple-600">6</div>
+                  <div className="text-sm text-gray-600">Fitur Unggulan</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-purple-600">4.8★</div>
-                  <div className="text-sm text-gray-600">Rating App</div>
+                  <div className="text-2xl font-bold text-purple-600">100%</div>
+                  <div className="text-sm text-gray-600">Transparan</div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Hero Image */}
+            <motion.div 
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative"
+            >
+              <div className="relative z-10">
+                <div className="w-full max-w-lg mx-auto aspect-square bg-gradient-to-br from-purple-200 via-pink-200 to-blue-200 rounded-3xl shadow-2xl flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-6xl mb-4">🐕🐱</div>
+                    <p className="text-gray-600 font-medium">Happy Pets with Owner</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating Cards */}
+              <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                className="absolute -top-4 -left-4 bg-white rounded-2xl p-4 shadow-xl z-20 hidden lg:block"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <Calendar className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">Booking</p>
+                    <p className="text-xs text-gray-600">Mudah & Cepat</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.4 }}
+                className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl z-20 hidden lg:block"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <CreditCard className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">Payment</p>
+                    <p className="text-xs text-gray-600">Online & Aman</p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Statement */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div>
+              <Badge variant="outline" className="mb-6">Problem Statement</Badge>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Masalah yang Dialami Pemilik Hewan Peliharaan
+              </h2>
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p className="text-lg">
+                  <strong>Keysha</strong>, seorang pemilik hewan peliharaan, mengalami kesulitan saat pertama kali pergi ke klinik hewan. 
+                  Dia merasa capek karena harus mengantri karena disaat itu klinik memang sedang padat jadwalnya.
+                </p>
+                <p>
+                  Ketika tiba saat pembayaran layanan/jasa, dia terkejut dengan harga yang tidak terduga tingginya, 
+                  karena tidak adanya transparansi yang jelas mengenai harga.
+                </p>
+              </div>
+              
+              <div className="mt-8 grid grid-cols-2 gap-6">
+                <div className="text-center p-4 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl">
+                  <div className="text-3xl font-bold text-red-600 mb-2">😫</div>
+                  <div className="text-sm text-gray-600">Antrian Panjang</div>
+                </div>
+                <div className="text-center p-4 bg-gradient-to-br from-yellow-50 to-red-50 rounded-xl">
+                  <div className="text-3xl font-bold text-yellow-600 mb-2">💸</div>
+                  <div className="text-sm text-gray-600">Harga Tidak Transparan</div>
                 </div>
               </div>
             </div>
-
-            {/* Hero Image */}
+            
             <div className="relative">
-              <div className="relative z-10">
-                <Image 
-                  src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=600&fit=crop&crop=center" 
-                  alt="Happy pets with owner"
-                  width={600}
-                  height={600}
-                  className="rounded-3xl shadow-2xl w-full max-w-lg mx-auto"
-                />
-              </div>
-              {/* Floating Cards */}
-              <div className="absolute -top-4 -left-4 bg-white rounded-2xl p-4 shadow-xl z-20 hidden lg:block">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm">Dr. Sarah</p>
-                    <p className="text-xs text-gray-600">Online sekarang</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl z-20 hidden lg:block">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Calendar className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm">Appointment</p>
-                    <p className="text-xs text-gray-600">Besok 14:00</p>
-                  </div>
+              <div className="w-full aspect-square bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 rounded-3xl shadow-2xl flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">😫💸</div>
+                  <p className="text-gray-600 font-medium">Pet Owner Problems</p>
                 </div>
               </div>
             </div>
@@ -295,34 +460,41 @@ export default function PibbleLanding() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <Badge variant="outline" className="mb-4">Fitur Unggulan</Badge>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Semua yang Anda Butuhkan dalam Satu Platform
+              PIBBLE APPS FEATURES
             </h2>
             <p className="text-xl text-gray-600">
-              Dilengkapi dengan berbagai fitur canggih untuk memastikan kesehatan dan kebahagiaan hewan peliharaan Anda
+              6 fitur unggulan yang memudahkan perawatan hewan peliharaan Anda
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {features.map((feature, index: number) => (
-              <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-purple-200">
+              <motion.div 
+                key={index} 
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-purple-200"
+              >
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center mb-6 text-purple-600 group-hover:scale-110 transition-transform">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section id="how-it-works" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <Badge variant="outline" className="mb-4">Cara Kerja</Badge>
@@ -337,7 +509,14 @@ export default function PibbleLanding() {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-4 gap-8">
               {steps.map((step, index: number) => (
-                <div key={index} className="relative">
+                <motion.div 
+                  key={index} 
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
                   {/* Connector Line */}
                   {index < steps.length - 1 && (
                     <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-purple-300 to-pink-300 transform translate-x-4 z-0"></div>
@@ -358,144 +537,81 @@ export default function PibbleLanding() {
                     <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-
-          {/* App Screenshots */}
-          <div className="mt-20">
-            <div className="grid md:grid-cols-3 gap-8 items-center max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="bg-white rounded-3xl p-6 shadow-xl mb-6 max-w-xs mx-auto transform hover:scale-105 transition-transform">
-                  <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8 mb-4">
-                    <UserPlus className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-gray-900 mb-2">Registrasi</h4>
-                    <p className="text-sm text-gray-600">Daftar dengan mudah</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-white rounded-3xl p-6 shadow-xl mb-6 max-w-xs mx-auto transform scale-110 hover:scale-115 transition-transform">
-                  <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 mb-4">
-                    <MessageCircle className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-gray-900 mb-2">Konsultasi</h4>
-                    <p className="text-sm text-gray-600">Chat dengan dokter</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-white rounded-3xl p-6 shadow-xl mb-6 max-w-xs mx-auto transform hover:scale-105 transition-transform">
-                  <div className="bg-gradient-to-br from-green-100 to-blue-100 rounded-2xl p-8 mb-4">
-                    <Heart className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-gray-900 mb-2">Monitoring</h4>
-                    <p className="text-sm text-gray-600">Pantau kesehatan</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      {/* Market Opportunity Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-            <div>
-              <Badge variant="outline" className="mb-6">Tentang Pibble</Badge>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Misi Kami adalah Kesehatan Hewan Peliharaan Anda
-              </h2>
-              <div className="space-y-6 text-gray-600 leading-relaxed">
-                <p className="text-lg">
-                  Pibble adalah platform inovatif yang didedikasikan untuk memberikan perawatan terbaik bagi hewan peliharaan Anda. 
-                  Kami memahami bahwa hewan peliharaan adalah bagian dari keluarga, dan mereka pantas mendapatkan perawatan terbaik.
-                </p>
-                <p>
-                  Dengan menggabungkan teknologi terdepan dan jaringan profesional veteriner terpercaya, kami menciptakan solusi 
-                  komprehensif yang memudahkan pemilik hewan peliharaan dalam menjaga kesehatan dan kebahagiaan sahabat berbulu mereka.
-                </p>
-              </div>
-              
-              <div className="mt-8 grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
-                  <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
-                  <div className="text-sm text-gray-600">Layanan Tersedia</div>
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <Badge variant="outline" className="mb-4">Market Opportunity</Badge>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              PIBBLE APPS - Market Opportunities
+            </h2>
+            <p className="text-xl text-gray-600">
+              5 segmen pasar utama yang dapat dilayani oleh platform Pibble
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
+            {marketOpportunities.map((opportunity, index: number) => (
+              <motion.div 
+                key={index} 
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 text-center"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center mb-4 text-blue-600 group-hover:scale-110 transition-transform mx-auto">
+                  {opportunity.icon}
                 </div>
-                <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">99%</div>
-                  <div className="text-sm text-gray-600">Tingkat Kepuasan</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative">
-              <Image 
-                src="https://images.unsplash.com/photo-1629196166180-4f37c2ee40bb?w=600&h=600&fit=crop&crop=center" 
-                alt="Veterinarian team"
-                width={600}
-                height={600}
-                className="rounded-3xl shadow-2xl w-full"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
-                <div className="flex items-center space-x-4">
-                  <div className="flex -space-x-2">
-                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full border-4 border-white"></div>
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full border-4 border-white"></div>
-                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-500 rounded-full border-4 border-white"></div>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">500+ Dokter</p>
-                    <p className="text-sm text-gray-600">Siap membantu</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{opportunity.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{opportunity.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <Badge variant="outline" className="mb-4">Tim Dokter</Badge>
+            <Badge variant="outline" className="mb-4">Meet The Team</Badge>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Bertemu dengan Tim Profesional Kami
+              Tim Profesional PIBBLE
             </h2>
             <p className="text-xl text-gray-600">
-              Dokter hewan berpengalaman dan berlisensi siap memberikan perawatan terbaik
+              Tim developer dan designer berpengalaman yang membangun aplikasi Pibble
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index: number) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center group">
-                <div className="w-24 h-24 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl group-hover:scale-105 transition-transform">
-                  👨‍⚕️
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-purple-600 font-medium mb-3">{member.role}</p>
-                <div className="flex justify-center items-center space-x-1 mb-4">
-                                      {[...Array(5)].map((_, i: number) => (
-                    <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                  ))}
-                  <span className="text-sm text-gray-600 ml-2">{member.rating}</span>
-                </div>
-                <Button variant="outline" size="sm" className="hover:bg-purple-50">
-                  Lihat Profil
-                </Button>
-              </div>
+              <motion.div 
+                key={index} 
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center group border border-gray-100"
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{member.avatar}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{member.name}</h3>
+                <p className="text-purple-600 font-medium mb-4">{member.role}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -510,7 +626,14 @@ export default function PibbleLanding() {
             
             <div className="space-y-4">
               {faqs.map((faq, index: number) => (
-                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+                <motion.div 
+                  key={index} 
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow"
+                >
                   <button
                     onClick={() => toggleFaq(index)}
                     className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
@@ -523,7 +646,7 @@ export default function PibbleLanding() {
                       <p className="text-gray-600 leading-relaxed pt-4">{faq.answer}</p>
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
             
@@ -542,38 +665,50 @@ export default function PibbleLanding() {
       <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Siap Memberikan yang Terbaik untuk Hewan Peliharaan Anda?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Bergabunglah dengan ribuan pemilik hewan peliharaan yang telah mempercayakan perawatan hewan kesayangan mereka kepada Pibble.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100">
-                <Apple className="mr-2 h-5 w-5" />
-                Download for iOS
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Download className="mr-2 h-5 w-5" />
-                Download for Android
-              </Button>
-            </div>
-            
-            {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-white/80">
-              <div className="flex items-center space-x-2">
-                <Shield className="h-5 w-5" />
-                <span className="text-sm">100% Aman & Terpercaya</span>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Siap Menggunakan PIBBLE untuk Hewan Peliharaan Anda?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Bergabunglah dengan revolusi perawatan hewan peliharaan. Tidak ada lagi antrian panjang dan harga mengejutkan. 
+                Semua transparan dan mudah di PIBBLE!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+                  <Apple className="mr-2 h-5 w-5" />
+                  Download for iOS
+                </Button>
+                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+                  <Download className="mr-2 h-5 w-5" />
+                  Download for Android
+                </Button>
               </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="h-5 w-5" />
-                <span className="text-sm">Support 24/7</span>
+              
+              {/* Trust Indicators */}
+              <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-white/80">
+                <div className="flex items-center space-x-2">
+                  <Shield className="h-5 w-5" />
+                  <span className="text-sm">100% Aman & Terpercaya</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Clock className="h-5 w-5" />
+                  <span className="text-sm">Support 24/7</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Star className="h-5 w-5 fill-current" />
+                  <span className="text-sm">Transparansi Harga</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Award className="h-5 w-5" />
+                  <span className="text-sm">Rewarding System</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Star className="h-5 w-5 fill-current" />
-                <span className="text-sm">Rating 4.8/5</span>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -592,11 +727,11 @@ export default function PibbleLanding() {
                   height={40}
                   className="object-contain"
                 />
-                <span className="text-2xl font-bold">Pibble</span>
+                <span className="text-2xl font-bold">PIBBLE</span>
               </div>
               <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-                Platform terdepan untuk perawatan hewan peliharaan yang menghubungkan Anda dengan profesional veteriner terbaik. 
-                Memberikan solusi lengkap untuk kesehatan dan kebahagiaan hewan kesayangan Anda.
+                Platform Pet Care and Health Service App yang menjembatani pemilik hewan peliharaan 
+                dengan penyedia layanan perawatan hewan. Solusi untuk antrian panjang dan transparansi harga.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
@@ -614,29 +749,29 @@ export default function PibbleLanding() {
               </div>
             </div>
             
-            {/* Services */}
+            {/* Features */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Layanan</h3>
+              <h3 className="text-lg font-semibold mb-6">Fitur Utama</h3>
               <ul className="space-y-3 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Konsultasi Online</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Janji Temu</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Health Tracking</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Grooming Service</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Pet Insurance</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Emergency Care</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Booking Service</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Rewarding System</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pet Profile</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Online Payments</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Live Camera</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Monitoring Schedule</a></li>
               </ul>
             </div>
             
-            {/* Company */}
+            {/* Market */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Perusahaan</h3>
+              <h3 className="text-lg font-semibold mb-6">Layanan</h3>
               <ul className="space-y-3 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Tentang Kami</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Tim Dokter</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Karir</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Press Kit</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Kontak</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pet Clinic</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pet Shop</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pet Adoption</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pet Hotel</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pet Grooming</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Partnership</a></li>
               </ul>
             </div>
           </div>
@@ -645,8 +780,8 @@ export default function PibbleLanding() {
           <div className="border-t border-gray-800 pt-8 mb-8">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-lg font-semibold mb-2">Stay Updated</h3>
-                <p className="text-gray-400">Dapatkan tips perawatan hewan dan update terbaru dari Pibble</p>
+                <h3 className="text-lg font-semibold mb-2">Stay Updated with PIBBLE</h3>
+                <p className="text-gray-400">Dapatkan update terbaru tentang fitur dan layanan PIBBLE untuk hewan peliharaan Anda</p>
               </div>
               <div className="flex gap-4">
                 <input 
@@ -665,7 +800,7 @@ export default function PibbleLanding() {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex flex-col md:flex-row gap-4 text-gray-400 text-sm">
-                <p>© 2025 Pibble. All rights reserved.</p>
+                <p>© 2025 PIBBLE. All rights reserved. Pet Care and Health Service App.</p>
                 <div className="flex gap-4">
                   <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                   <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
