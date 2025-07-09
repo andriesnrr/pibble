@@ -544,6 +544,475 @@ export default function PibbleLanding() {
         </div>
       </section>
 
+      {/* Mobile App Showcase Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-100 to-purple-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <Badge variant="outline" className="mb-4">Mobile App Preview</Badge>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Experience PIBBLE Mobile App
+            </h2>
+            <p className="text-xl text-gray-600">
+              Lihat tampilan aplikasi mobile PIBBLE yang user-friendly dan feature-rich
+            </p>
+          </div>
+
+          {/* Dashboard & Member Section */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto mb-20">
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                Dashboard & Member Management
+              </h3>
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p className="text-lg">
+                  <strong>Dashboard yang Intuitif</strong> - Kelola semua aktivitas hewan peliharaan Anda dalam satu tampilan yang mudah dipahami.
+                </p>
+                <p>
+                  <strong>Member System</strong> - Sistem keanggotaan yang memberikan berbagai keuntungan dan akses eksklusif untuk layanan premium.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                    <span>Profile management untuk hewan peliharaan</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                    <span>Tracking jadwal dan riwayat perawatan</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                    <span>Member benefits dan reward points</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2 flex justify-center space-x-6"
+            >
+              {/* Dashboard Mobile Mockup */}
+              <div className="relative">
+                <div className="w-64 h-[520px] bg-white rounded-[2.5rem] shadow-2xl p-2">
+                  <div className="w-full h-full bg-gradient-to-b from-gray-50 to-white rounded-[2rem] p-4 relative overflow-hidden">
+                    {/* Status Bar */}
+                    <div className="flex justify-between items-center mb-6 text-xs text-gray-600">
+                      <span>9:41</span>
+                      <div className="flex space-x-1">
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-6 h-2 bg-green-500 rounded-sm"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Header */}
+                    <div className="mb-6">
+                      <h4 className="text-lg font-bold text-gray-900">Dashboard</h4>
+                      <p className="text-sm text-gray-600">Selamat datang kembali!</p>
+                    </div>
+                    
+                    {/* Pet Cards */}
+                    <div className="space-y-4 mb-6">
+                      <div className="bg-gradient-to-r from-orange-100 to-orange-200 rounded-xl p-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-12 h-12 bg-orange-300 rounded-full flex items-center justify-center text-lg">🐱</div>
+                          <div>
+                            <p className="font-semibold text-gray-900">Li Bro</p>
+                            <p className="text-xs text-gray-600">3 Bulan</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-pink-100 to-pink-200 rounded-xl p-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-12 h-12 bg-pink-300 rounded-full flex items-center justify-center text-lg">🐶</div>
+                          <div>
+                            <p className="font-semibold text-gray-900">Bee G</p>
+                            <p className="text-xs text-gray-600">1 Tahun</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Quick Actions */}
+                    <div className="space-y-3">
+                      <div className="bg-blue-500 text-white rounded-lg p-3 text-center">
+                        <p className="text-sm font-medium">Next Appointment</p>
+                        <p className="text-xs">Today 10:00</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Member Mobile Mockup */}
+              <div className="relative">
+                <div className="w-64 h-[520px] bg-white rounded-[2.5rem] shadow-2xl p-2">
+                  <div className="w-full h-full bg-gradient-to-b from-purple-50 to-white rounded-[2rem] p-4 relative overflow-hidden">
+                    {/* Status Bar */}
+                    <div className="flex justify-between items-center mb-6 text-xs text-gray-600">
+                      <span>9:41</span>
+                      <div className="flex space-x-1">
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-6 h-2 bg-green-500 rounded-sm"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Header */}
+                    <div className="text-center mb-6">
+                      <h4 className="text-lg font-bold text-gray-900">Member</h4>
+                    </div>
+                    
+                    {/* Member Card */}
+                    <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-4 text-white mb-6">
+                      <div className="flex items-center space-x-3 mb-4">
+                        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                          <span className="text-lg">⭐</span>
+                        </div>
+                        <div>
+                          <p className="font-bold">BUDDY</p>
+                          <p className="text-xs opacity-90">Premium Member</p>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-2xl font-bold">1,500</p>
+                        <p className="text-xs opacity-90">Points</p>
+                      </div>
+                    </div>
+                    
+                    {/* Benefits */}
+                    <div className="space-y-3">
+                      <div className="bg-gray-50 rounded-lg p-3">
+                        <p className="text-sm font-medium text-gray-900">Point Loyalty</p>
+                        <p className="text-xs text-gray-600">Dapatkan point setiap transaksi</p>
+                      </div>
+                      <div className="bg-gray-50 rounded-lg p-3">
+                        <p className="text-sm font-medium text-gray-900">Promo Spesial</p>
+                        <p className="text-xs text-gray-600">Akses promo eksklusif member</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Rewards & Services Section */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto mb-20">
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex justify-center space-x-6"
+            >
+              {/* Rewards Mobile Mockup */}
+              <div className="relative">
+                <div className="w-64 h-[520px] bg-white rounded-[2.5rem] shadow-2xl p-2">
+                  <div className="w-full h-full bg-gradient-to-b from-blue-50 to-white rounded-[2rem] p-4 relative overflow-hidden">
+                    {/* Status Bar */}
+                    <div className="flex justify-between items-center mb-6 text-xs text-gray-600">
+                      <span>9:41</span>
+                      <div className="flex space-x-1">
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-6 h-2 bg-green-500 rounded-sm"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Buddy Header */}
+                    <div className="bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl p-4 text-white mb-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-bold">BUDDY {'>'}</p>
+                          <p className="text-xs opacity-90">💰 1,500 Point</p>
+                        </div>
+                        <div className="w-8 h-8 bg-white/20 rounded-full"></div>
+                      </div>
+                      <div className="mt-3">
+                        <div className="bg-white/20 rounded-full h-2">
+                          <div className="bg-white rounded-full h-2 w-3/4"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Vouchers */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-orange-200 rounded-lg"></div>
+                          <div>
+                            <p className="text-sm font-medium">Voucher Pawsitastic</p>
+                            <p className="text-xs text-gray-600">Diskon 20%</p>
+                          </div>
+                        </div>
+                        <div className="bg-orange-400 text-white text-xs px-2 py-1 rounded">Tukar</div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-green-200 rounded-lg"></div>
+                          <div>
+                            <p className="text-sm font-medium">Voucher Groom & Glam</p>
+                            <p className="text-xs text-gray-600">Gratis grooming</p>
+                          </div>
+                        </div>
+                        <div className="bg-green-400 text-white text-xs px-2 py-1 rounded">Tukar</div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-purple-200 rounded-lg"></div>
+                          <div>
+                            <p className="text-sm font-medium">Voucher Purrfect</p>
+                            <p className="text-xs text-gray-600">Consultation</p>
+                          </div>
+                        </div>
+                        <div className="bg-purple-400 text-white text-xs px-2 py-1 rounded">Tukar</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Services Mobile Mockup */}
+              <div className="relative">
+                <div className="w-64 h-[520px] bg-white rounded-[2.5rem] shadow-2xl p-2">
+                  <div className="w-full h-full bg-gradient-to-b from-gray-50 to-white rounded-[2rem] p-4 relative overflow-hidden">
+                    {/* Status Bar */}
+                    <div className="flex justify-between items-center mb-6 text-xs text-gray-600">
+                      <span>9:41</span>
+                      <div className="flex space-x-1">
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-6 h-2 bg-green-500 rounded-sm"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-900">Services</h4>
+                        <p className="text-sm text-gray-600">Choose your service</p>
+                      </div>
+                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <span className="text-blue-600">🔔</span>
+                      </div>
+                    </div>
+                    
+                    {/* Service Grid */}
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div className="bg-blue-100 rounded-xl p-4 text-center">
+                        <div className="w-8 h-8 bg-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                          <span className="text-white text-sm">🏥</span>
+                        </div>
+                        <p className="text-xs font-medium">Veterinary</p>
+                      </div>
+                      
+                      <div className="bg-pink-100 rounded-xl p-4 text-center">
+                        <div className="w-8 h-8 bg-pink-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                          <span className="text-white text-sm">✂️</span>
+                        </div>
+                        <p className="text-xs font-medium">Grooming</p>
+                      </div>
+                      
+                      <div className="bg-green-100 rounded-xl p-4 text-center">
+                        <div className="w-8 h-8 bg-green-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                          <span className="text-white text-sm">🏨</span>
+                        </div>
+                        <p className="text-xs font-medium">Pet Hotel</p>
+                      </div>
+                      
+                      <div className="bg-purple-100 rounded-xl p-4 text-center">
+                        <div className="w-8 h-8 bg-purple-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                          <span className="text-white text-sm">🛒</span>
+                        </div>
+                        <p className="text-xs font-medium">Pet Shop</p>
+                      </div>
+                    </div>
+                    
+                    {/* Featured Service */}
+                    <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl p-4 text-white">
+                      <p className="text-sm font-bold mb-1">CHECK UP</p>
+                      <p className="text-xs opacity-90">Free health consultation</p>
+                      <div className="mt-3 bg-white/20 rounded-lg p-2 text-center">
+                        <p className="text-xs font-medium">Book Now</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                Rewards & Services Management
+              </h3>
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p className="text-lg">
+                  <strong>Reward System yang Menguntungkan</strong> - Dapatkan reward yang akan diberikan oleh Pibble dengan cara menggunakan layanan yang disediakan.
+                </p>
+                <p>
+                  <strong>Layanan Lengkap</strong> - Akses berbagai layanan perawatan hewan dalam satu aplikasi yang mudah digunakan.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <span>Reward points untuk setiap transaksi</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <span>Voucher dan promo eksklusif</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <span>Berbagai layanan pet care terintegrasi</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Vaccine & Checkup Section */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                Vaccine Management & Health Checkup
+              </h3>
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p className="text-lg">
+                  <strong>Pengelolaan Vaksin Terpadu</strong> - Mencapai yang tidak diinginkan lebih awal dengan pengingat vaksin dan jadwal kesehatan.
+                </p>
+                <p>
+                  <strong>Checkup Berkala</strong> - Pantau kesehatan hewan peliharaan Anda secara rutin dengan sistem reminder otomatis.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <span>Jadwal vaksinasi otomatis</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <span>Reminder checkup kesehatan</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <span>Riwayat medis lengkap</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              {/* Vaccine Mobile Mockup */}
+              <div className="relative">
+                <div className="w-64 h-[520px] bg-white rounded-[2.5rem] shadow-2xl p-2">
+                  <div className="w-full h-full bg-gradient-to-b from-gray-50 to-white rounded-[2rem] p-4 relative overflow-hidden">
+                    {/* Status Bar */}
+                    <div className="flex justify-between items-center mb-6 text-xs text-gray-600">
+                      <span>9:41</span>
+                      <div className="flex space-x-1">
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                        <div className="w-6 h-2 bg-green-500 rounded-sm"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-6">
+                      <h4 className="text-lg font-bold text-gray-900">Vaksin</h4>
+                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <span className="text-blue-600">+</span>
+                      </div>
+                    </div>
+                    
+                    {/* Pet Selection */}
+                    <div className="mb-6">
+                      <p className="text-sm text-gray-600 mb-3">Pilih Hewan Peliharaan</p>
+                      <div className="flex space-x-3">
+                        <div className="bg-blue-100 rounded-lg p-3 text-center flex-1">
+                          <div className="w-8 h-8 bg-blue-500 rounded-full mx-auto mb-1 flex items-center justify-center text-white">🐱</div>
+                          <p className="text-xs font-medium">Li Bro</p>
+                        </div>
+                        <div className="bg-gray-100 rounded-lg p-3 text-center flex-1">
+                          <div className="w-8 h-8 bg-gray-300 rounded-full mx-auto mb-1 flex items-center justify-center">🐶</div>
+                          <p className="text-xs text-gray-600">Bee G</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Vaccine Schedule */}
+                    <div className="space-y-3">
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="text-sm font-medium text-green-800">Rabies Vaccine</p>
+                            <p className="text-xs text-green-600">Due: Next Week</p>
+                          </div>
+                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                            <span className="text-white text-xs">✓</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="text-sm font-medium text-blue-800">DHPP Vaccine</p>
+                            <p className="text-xs text-blue-600">Scheduled: Tomorrow</p>
+                          </div>
+                          <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                            <span className="text-white text-xs">!</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="text-sm font-medium text-yellow-800">Health Checkup</p>
+                            <p className="text-xs text-yellow-600">Monthly checkup</p>
+                          </div>
+                          <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <span className="text-white text-xs">📅</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Market Opportunity Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
